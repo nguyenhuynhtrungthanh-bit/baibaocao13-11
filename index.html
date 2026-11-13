@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T SETUP – Đồ Trang Trí Bàn Học & Bàn Làm Việc Phong Cách Retro</title>
+    <title>T SETUP</title>
     <meta name="description" content="T SETUP: kệ gỗ nâng màn hình, đèn bàn, cây xanh mini, đồng hồ, lịch gỗ và gear tông sáng để decor bàn học, bàn làm việc phong cách retro.">
 
     <!-- Tailwind CSS đã biên dịch sẵn, không cần CDN -->
@@ -1855,6 +1855,128 @@
         .ts-slots { display: inline-flex; gap: .2rem; }
         .ts-slot { display: inline-block; width: .5rem; height: .5rem; background: transparent; border: 1px solid #8A7048; border-radius: 50%; }
         .ts-slot.is-on { background: #7A5B34; }
+
+        /* ===================== MENU SỔ XUỐNG · TRANG DANH MỤC · TÀI KHOẢN ===================== */
+        /* --- Thanh menu có mục sổ xuống --- */
+        .ts-nav { gap: .75rem; }
+        @media (min-width: 1024px) { .ts-nav { gap: 1.25rem; } }
+        /* Giữ logo, ô tìm kiếm và nút tài khoản đúng cỡ, không bị ép xuống dòng */
+        header a.group { flex-shrink: 0; }
+        header a.group .tracking-widest { white-space: nowrap; }
+        @media (max-width: 1279px) { header a.group .tracking-widest { display: none; } }
+        .ts-search { flex-shrink: 1; width: 10.5rem; }
+        .ts-search input { text-overflow: ellipsis; }
+        @media (min-width: 1280px) { .ts-search { width: 13rem; } }
+        #auth-area { flex-shrink: 0; white-space: nowrap; }
+        .ts-dd { position: relative; display: inline-flex; align-items: center; gap: .1rem; padding-block: 1.6rem; }
+        .ts-dd-link { display: inline-flex; align-items: center; gap: .375rem; white-space: nowrap; }
+        .ts-dd-toggle { display: inline-flex; align-items: center; justify-content: center; width: 1.1rem; height: 1.5rem; padding: 0; font-size: .6rem; color: #6B5740; border-radius: 999px; transition: color .2s ease, background-color .2s ease; }
+        @media (min-width: 1024px) { .ts-dd-toggle { width: 1.5rem; } }
+        .ts-dd-toggle:hover, .ts-dd.is-open > .ts-dd-toggle { color: #964C17; }
+        .ts-dd-toggle i { transition: transform .2s ease; }
+        .ts-dd.is-open > .ts-dd-toggle i { transform: rotate(180deg); }
+        .ts-dd-panel { position: absolute; top: 100%; left: 50%; z-index: 45; padding-top: .35rem; visibility: hidden; opacity: 0; pointer-events: none; transform: translate(-50%, 6px); translate: var(--ts-shift, 0px) 0; transition: opacity .18s ease, transform .18s ease, visibility .18s; }
+        .ts-dd.is-open > .ts-dd-panel { visibility: visible; opacity: 1; pointer-events: auto; transform: translate(-50%, 0); transition: opacity .18s ease, transform .18s ease, visibility 0s; }
+        .ts-dd-right > .ts-dd-panel { left: auto; right: 0; transform: translate(0, 6px); }
+        .ts-dd-right.is-open > .ts-dd-panel { transform: translate(0, 0); }
+        .ts-dd-card { min-width: 16rem; padding: .6rem; background: #FFFEFA; border: 1px solid #3A2C1E; border-radius: .9rem; box-shadow: 4px 4px 0 #3A2C1E; }
+        .ts-dd-wide { width: min(31rem, calc(100vw - 1.5rem)); }
+        .ts-dd-combos { width: min(22rem, calc(100vw - 1.5rem)); }
+        .ts-dd-title { padding: .35rem .6rem .5rem; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #7A5B34; }
+        .ts-dd-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .15rem; }
+        .ts-dd-item { display: flex; align-items: center; gap: .65rem; width: 100%; padding: .5rem .6rem; text-align: left; color: #3A2C1E; border-radius: .6rem; transition: background-color .15s ease; }
+        .ts-dd-item:hover, .ts-dd-item:focus-visible { background: #F1ECE0; outline: none; }
+        .ts-dd-ico { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; font-size: .8rem; color: #7A5B34; background: #F8F6F1; border: 1px solid #E2D9C6; border-radius: 999px; transition: color .15s ease, background-color .15s ease, border-color .15s ease; }
+        .ts-dd-item:hover .ts-dd-ico, .ts-dd-item:focus-visible .ts-dd-ico { color: #FFFEFA; background: #7A5B34; border-color: #3A2C1E; }
+        .ts-dd-accent .ts-dd-ico { color: #3A2C1E; background: #F3DFA8; border-color: #D9A547; }
+        .ts-dd-txt { display: flex; flex-direction: column; min-width: 0; line-height: 1.3; }
+        .ts-dd-txt b { font-size: .78rem; font-weight: 700; }
+        .ts-dd-txt small { font-size: 11px; color: #6B5740; }
+        .ts-dd-foot { display: flex; align-items: center; justify-content: space-between; margin: .4rem -.1rem -.1rem; padding: .55rem .75rem; font-size: .72rem; font-weight: 700; color: #964C17; background: #F8F6F1; border-top: 1px dashed #E2D9C6; border-radius: 0 0 .6rem .6rem; }
+        .ts-dd-foot:hover { text-decoration: underline; }
+        .ts-dd-sep { height: 1px; margin: .35rem .5rem; background: #E2D9C6; }
+
+        /* --- Menu trên điện thoại: mục thu gọn / mở ra --- */
+        #mobile-menu { max-height: calc(100vh - 6.5rem); overflow-y: auto; }
+        .ts-acc { border-bottom: 1px solid #E2D9C6; }
+        .ts-acc summary { display: flex; align-items: center; justify-content: space-between; padding: .5rem 0; font-weight: 500; color: #3A2C1E; cursor: pointer; list-style: none; }
+        .ts-acc summary::-webkit-details-marker { display: none; }
+        .ts-acc summary::after { content: '▾'; font-size: .9rem; color: #6B5740; transition: transform .2s ease; }
+        .ts-acc[open] summary::after { transform: rotate(180deg); }
+        .ts-acc-body { display: grid; gap: .1rem; padding: 0 0 .6rem; }
+        .ts-m-auth { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; padding-top: .75rem; }
+        .ts-m-auth .ts-btn { flex: 1; }
+        .ts-m-user { display: flex; flex: 1 1 100%; align-items: center; gap: .6rem; min-width: 0; }
+        .ts-m-user b { display: block; font-size: .8rem; }
+        .ts-m-user small { display: block; font-size: 11px; color: #6B5740; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+        /* --- Cụm tài khoản trên header --- */
+        .ts-auth-text { display: none; padding: .55rem 1rem; white-space: nowrap; }
+        .ts-auth-text:not(.ts-btn-primary) { border-color: transparent; background: transparent; padding-inline: .75rem; }
+        .ts-auth-text:not(.ts-btn-primary):hover { border-color: #3A2C1E; }
+        .ts-auth-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; font-size: 1.1rem; color: #3A2C1E; border: 1px solid transparent; border-radius: 999px; transition: background-color .2s ease, border-color .2s ease; }
+        .ts-auth-icon:hover { background: #FFFEFA; border-color: #E2D9C6; }
+        @media (min-width: 1280px) { .ts-auth-text { display: inline-flex; } .ts-auth-icon { display: none; } }
+        .ts-dd-user { padding-block: 1.2rem; }
+        .ts-user-btn { width: auto; height: auto; gap: .5rem; padding: .25rem .5rem .25rem .25rem; font-size: .75rem; font-weight: 600; color: #3A2C1E; border: 1px solid #3A2C1E; }
+        .ts-user-btn .fa-chevron-down { font-size: .6rem; }
+        .ts-avatar { display: inline-flex; flex-shrink: 0; align-items: center; justify-content: center; width: 2rem; height: 2rem; font-size: .8rem; font-weight: 700; text-transform: uppercase; color: #FFFEFA; background: #7A5B34; border-radius: 999px; }
+        .ts-avatar-lg { width: 2.6rem; height: 2.6rem; font-size: 1rem; }
+        .ts-user-name { display: none; max-width: 7rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        @media (min-width: 1280px) { .ts-user-name { display: inline; } }
+        .ts-user-head { display: flex; align-items: center; gap: .7rem; padding: .4rem .6rem .5rem; }
+        .ts-user-head b { display: block; max-width: 11rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .82rem; }
+        .ts-user-head small { display: block; max-width: 11rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; color: #6B5740; }
+
+        /* --- Trang danh sách (danh mục / sản phẩm) --- */
+        .ts-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; font-size: .75rem; color: #6B5740; }
+        .ts-crumbs a { font-weight: 600; color: #7A5B34; }
+        .ts-crumbs a:hover { text-decoration: underline; }
+        .ts-crumbs .sep { color: #B8A987; }
+        .ts-crumbs [aria-current] { font-weight: 700; color: #3A2C1E; }
+        .ts-listicon { display: flex; flex-shrink: 0; align-items: center; justify-content: center; width: 4rem; height: 4rem; font-size: 1.5rem; color: #FFFEFA; background: #7A5B34; border: 2px solid #3A2C1E; border-radius: 999px; box-shadow: 3px 3px 0 #3A2C1E; }
+        a.filter-btn { display: inline-block; }
+        .filter-btn .ts-chip-n { margin-left: .25rem; font-weight: 600; opacity: .65; }
+        .filter-btn[aria-pressed="true"] { background: #3A2C1E; border-color: #3A2C1E; color: #FFFEFA; }
+        .ts-list-foot { margin-top: 2.5rem; text-align: center; }
+        .ts-empty { grid-column: 1 / -1; display: grid; justify-items: center; gap: .75rem; padding: 3.5rem 1rem; text-align: center; font-size: .85rem; color: #6B5740; }
+        .ts-empty > i { font-size: 2.25rem; color: #C9BDA3; }
+        .ts-empty-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+        #combos .ts-flash, .ts-flash { animation: tsFlash 1.8s ease-out 1; }
+        @keyframes tsFlash { 0%, 55% { outline: 3px solid #D9A547; outline-offset: 4px; } 100% { outline: 3px solid rgba(217,165,71,0); outline-offset: 4px; } }
+        #combo-builder, #combos, #recent { scroll-margin-top: 5.5rem; }
+        [id^="combo-card-"] { scroll-margin-top: 6rem; }
+
+        /* --- Cửa sổ đăng nhập / đăng ký --- */
+        .ts-auth { max-width: 26rem; padding: 1.5rem; }
+        .ts-auth-close { position: absolute; top: .75rem; right: .75rem; display: flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; color: #3A2C1E; background: #FFFEFA; border: 1px solid #E2D9C6; border-radius: 999px; transition: color .2s ease, background-color .2s ease; }
+        .ts-auth-close:hover { color: #fff; background: #964C17; }
+        .ts-auth-top { margin-bottom: 1rem; text-align: center; }
+        .ts-auth-logo { display: flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; margin: 0 auto .6rem; font-size: 1.1rem; color: #FFFEFA; background: #7A5B34; border: 2px solid #3A2C1E; border-radius: 999px; box-shadow: 2px 2px 0 #3A2C1E; }
+        .ts-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: .25rem; padding: .25rem; margin-bottom: 1rem; background: #F1ECE0; border-radius: 999px; }
+        .ts-tabs button { padding: .55rem; font-size: .78rem; font-weight: 700; color: #6B5740; border-radius: 999px; transition: color .2s ease, background-color .2s ease; }
+        .ts-tabs button[aria-selected="true"] { color: #FFFEFA; background: #3A2C1E; }
+        .ts-auth-note { margin-bottom: .85rem; padding: .55rem .8rem; font-size: .75rem; line-height: 1.5; color: #6B4A12; background: #FBF1DB; border: 1px solid #EBD39A; border-radius: .6rem; }
+        .ts-auth-form { display: grid; gap: .85rem; }
+        .ts-fieldwrap { min-width: 0; }
+        .ts-pw { position: relative; }
+        .ts-pw .ts-input { padding-right: 2.6rem; }
+        .ts-eye { position: absolute; top: 50%; right: .35rem; display: flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; margin-top: -1rem; font-size: .8rem; color: #6B5740; border-radius: 999px; }
+        .ts-eye:hover { color: #3A2C1E; background: #F1ECE0; }
+        .ts-err { margin-top: .25rem; font-size: 11px; line-height: 1.4; color: #A63D2F; }
+        .ts-input[aria-invalid="true"] { border-color: #A63D2F; }
+        .ts-check { display: flex; align-items: flex-start; gap: .5rem; font-size: .75rem; line-height: 1.5; color: #3A2C1E; cursor: pointer; }
+        .ts-check input { flex-shrink: 0; width: 1rem; height: 1rem; margin-top: .15rem; accent-color: #7A5B34; }
+        .ts-formerr { padding: .6rem .8rem; font-size: .75rem; line-height: 1.5; color: #8E2E22; background: #FBEAE7; border: 1px solid #E8B9B1; border-radius: .6rem; }
+        .ts-formerr button { font-weight: 700; text-decoration: underline; }
+        .ts-btn-block { width: 100%; padding-top: .75rem; padding-bottom: .75rem; font-size: .8rem; }
+        .ts-auth-switch { font-size: .75rem; text-align: center; color: #6B5740; }
+        .ts-auth-switch button { font-weight: 700; color: #964C17; }
+        .ts-auth-switch button:hover { text-decoration: underline; }
+        .ts-auth-demo { margin-top: 1rem; font-size: 11px; line-height: 1.5; text-align: center; color: #8A7048; }
+        .ts-meter { height: .3rem; margin-top: .45rem; overflow: hidden; background: #E2D9C6; border-radius: 999px; }
+        .ts-meter i { display: block; width: 0; height: 100%; background: #A63D2F; transition: width .25s ease, background-color .25s ease; }
+        .ts-meter-txt { min-height: 1rem; margin-top: .2rem; font-size: 11px; color: #6B5740; }
         @media (prefers-reduced-motion: reduce) {
             * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
         }
@@ -1889,17 +2011,29 @@
                     </div>
                 </a>
 
-                <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-retro-dark">
-                    <a href="#categories" class="hover:text-retro-accent transition-colors">Danh Mục</a>
-                    <a href="#products" class="hover:text-retro-accent transition-colors">Sản Phẩm</a>
-                    <a href="#combos" class="hover:text-retro-accent transition-colors flex items-center gap-1.5">
-                        Combo Setup <span class="bg-retro-accent text-white text-[9px] px-1.5 py-0.5 rounded font-bold">-10%</span>
-                    </a>
-                    <a href="#blog" class="hover:text-retro-accent transition-colors">Cẩm Nang Decor</a>
+                <nav class="hidden md:flex items-center ts-nav text-sm font-medium text-retro-dark" aria-label="Điều hướng chính">
+                    <div class="ts-dd">
+                        <a href="#categories" class="ts-dd-link hover:text-retro-accent transition-colors">Danh Mục</a>
+                        <button type="button" class="ts-dd-toggle" aria-label="Mở danh sách danh mục" aria-expanded="false" aria-controls="dd-categories"><i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="ts-dd-panel"><div id="dd-categories" class="ts-dd-card ts-dd-wide"></div></div>
+                    </div>
+                    <div class="ts-dd">
+                        <a href="#products" class="ts-dd-link hover:text-retro-accent transition-colors">Sản Phẩm</a>
+                        <button type="button" class="ts-dd-toggle" aria-label="Mở danh sách sản phẩm" aria-expanded="false" aria-controls="dd-products"><i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="ts-dd-panel"><div id="dd-products" class="ts-dd-card"></div></div>
+                    </div>
+                    <div class="ts-dd">
+                        <a href="#combos" class="ts-dd-link hover:text-retro-accent transition-colors">
+                            Combo Setup <span class="bg-retro-accent text-white text-[9px] px-1.5 py-0.5 rounded font-bold">-10%</span>
+                        </a>
+                        <button type="button" class="ts-dd-toggle" aria-label="Mở danh sách combo" aria-expanded="false" aria-controls="dd-combos"><i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="ts-dd-panel"><div id="dd-combos" class="ts-dd-card ts-dd-combos"></div></div>
+                    </div>
+                    <a href="#blog" class="hover:text-retro-accent transition-colors whitespace-nowrap">Cẩm Nang Decor</a>
                 </nav>
 
                 <div class="flex items-center space-x-3 sm:space-x-4">
-                    <div class="relative hidden lg:block w-60">
+                    <div class="relative hidden lg:block w-60 ts-search">
                         <label for="search-input" class="sr-only">Tìm sản phẩm</label>
                         <input id="search-input" type="search" autocomplete="off" placeholder="Tìm kệ gỗ, đèn bàn, cây mini..." class="w-full bg-retro-paper border border-retro-border text-retro-dark text-xs rounded-full py-2.5 pl-4 pr-9 focus:outline-none focus:border-retro-olive transition-all">
                         <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-3 text-retro-sub text-xs pointer-events-none"></i>
@@ -1910,14 +2044,7 @@
                         <span id="cart-badge" class="absolute top-0 right-0 bg-retro-accent text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-retro-bg">0</span>
                     </button>
 
-                    <button type="button" data-open-manage="1" aria-label="Quản lý sản phẩm" title="Quản lý sản phẩm" class="p-2.5 text-retro-dark hover:bg-retro-paper border border-transparent hover:border-retro-border rounded-full transition-all">
-                        <i class="fa-solid fa-sliders text-lg"></i>
-                    </button>
-
-                    <button type="button" onclick="showToast('Tính năng đăng nhập sẽ được bổ sung ở phiên bản sau.')" class="hidden sm:flex items-center gap-2 text-xs font-semibold px-4 py-2.5 rounded-full border border-retro-dark hover:bg-retro-dark hover:text-white transition-all duration-300">
-                        <i class="fa-regular fa-user"></i>
-                        <span>Đăng Nhập</span>
-                    </button>
+                    <div id="auth-area" class="flex items-center gap-2"></div>
                 </div>
             </div>
         </div>
@@ -1926,11 +2053,21 @@
         <div id="mobile-menu" class="hidden md:hidden bg-retro-paper border-t border-retro-border px-4 py-4 space-y-1">
             <label for="search-input-mobile" class="sr-only">Tìm sản phẩm</label>
             <input id="search-input-mobile" type="search" autocomplete="off" placeholder="Tìm sản phẩm decor..." class="w-full bg-retro-bg border border-retro-border text-retro-dark text-sm rounded-lg p-2.5 mb-2 focus:outline-none focus:border-retro-olive">
-            <a href="#categories" class="block text-retro-dark font-medium py-2 hover:text-retro-accent">Danh Mục Decor</a>
-            <a href="#products" class="block text-retro-dark font-medium py-2 hover:text-retro-accent">Tất Cả Sản Phẩm</a>
-            <a href="#combos" class="block text-retro-dark font-medium py-2 hover:text-retro-accent">Combo Setup Giảm 10%</a>
+            <details class="ts-acc">
+                <summary>Danh Mục Decor</summary>
+                <div id="m-categories" class="ts-acc-body"></div>
+            </details>
+            <details class="ts-acc">
+                <summary>Sản Phẩm</summary>
+                <div id="m-products" class="ts-acc-body"></div>
+            </details>
+            <details class="ts-acc">
+                <summary>Combo Setup Giảm 10%</summary>
+                <div id="m-combos" class="ts-acc-body"></div>
+            </details>
             <a href="#blog" class="block text-retro-dark font-medium py-2 hover:text-retro-accent">Cẩm Nang Decor</a>
             <a href="#" data-open-manage="1" class="block text-retro-dark font-medium py-2 hover:text-retro-accent">Quản Lý Sản Phẩm</a>
+            <div id="m-auth" class="ts-m-auth"></div>
         </div>
     </header>
 
@@ -1939,6 +2076,7 @@
             <p class="text-center text-sm bg-retro-gold/20 text-retro-dark py-3">Trang cần bật JavaScript để hiển thị danh sách sản phẩm và giỏ hàng.</p>
         </noscript>
 
+        <div id="view-home">
         <!-- Hero -->
         <section class="relative bg-gradient-to-b from-retro-bg via-retro-bg to-retro-paper border-b border-retro-border overflow-hidden py-16 lg:py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -2194,6 +2332,47 @@
                 </div>
             </div>
         </section>
+        </div>
+
+        <!-- Trang danh sách: hiện khi bấm vào một danh mục hoặc mục Sản Phẩm trên thanh menu -->
+        <div id="view-list" hidden>
+            <section class="bg-retro-paper border-b border-retro-border py-12">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <nav id="list-crumbs" class="ts-crumbs" aria-label="Đường dẫn trang"></nav>
+                    <div class="flex items-center gap-5 mt-6">
+                        <div id="list-icon" class="ts-listicon" aria-hidden="true"></div>
+                        <div class="min-w-0">
+                            <span id="list-eyebrow" class="text-xs font-bold text-retro-olive tracking-widest uppercase"></span>
+                            <h1 id="list-title" class="font-serif text-3xl sm:text-4xl font-bold text-retro-dark mt-1"></h1>
+                            <p id="list-sub" class="text-retro-sub text-sm mt-2 leading-relaxed"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-12">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div id="list-chips" class="flex flex-wrap gap-2 mb-6" role="navigation" aria-label="Chọn danh mục"></div>
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                        <p id="list-count" class="text-xs text-retro-sub" aria-live="polite"></p>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <button type="button" id="list-sale" class="filter-btn" aria-pressed="false"><i class="fa-solid fa-tags mr-1"></i> Chỉ hiện sản phẩm giảm giá</button>
+                            <label for="list-sort" class="text-xs font-semibold text-retro-sub">Sắp xếp:</label>
+                            <select id="list-sort" class="bg-retro-bg border border-retro-border text-retro-dark text-xs font-semibold rounded-full py-2 pl-3 pr-8 focus:outline-none focus:border-retro-olive">
+                                <option value="default">Mặc định</option>
+                                <option value="price-asc">Giá thấp → cao</option>
+                                <option value="price-desc">Giá cao → thấp</option>
+                                <option value="rating">Đánh giá cao nhất</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="list-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+                    <div class="ts-list-foot">
+                        <a href="#" class="ts-btn"><i class="fa-solid fa-arrow-left"></i> Về trang chủ</a>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -2219,14 +2398,7 @@
 
                 <div>
                     <h4 class="font-bold text-xs uppercase tracking-wider mb-3">Sản Phẩm</h4>
-                    <ul class="space-y-2 text-xs text-retro-sub">
-                                                <li><a href="#products" data-cat="stand" class="hover:text-retro-olive transition">Kệ &amp; Giá Đỡ</a></li>
-                                                <li><a href="#products" data-cat="lamp" class="hover:text-retro-olive transition">Đèn Bàn</a></li>
-                                                <li><a href="#products" data-cat="plant" class="hover:text-retro-olive transition">Cây Xanh Mini</a></li>
-                                                <li><a href="#products" data-cat="organizer" class="hover:text-retro-olive transition">Sắp Xếp Gọn Gàng</a></li>
-                                                <li><a href="#products" data-cat="decor" class="hover:text-retro-olive transition">Đồ Trang Trí</a></li>
-                                                <li><a href="#" data-open-manage="1" class="hover:text-retro-olive transition">Quản lý sản phẩm</a></li>
-                                            </ul>
+                    <ul id="footer-cats" class="space-y-2 text-xs text-retro-sub"></ul>
                 </div>
 
                 <div>
@@ -2446,6 +2618,95 @@
                     </div>
                 </section>
             </div>
+        </div>
+    </div>
+
+    <!-- Đăng nhập / Đăng ký tài khoản -->
+    <div id="auth-modal" class="ts-modal" hidden onclick="if (event.target === this) closeAuth()">
+        <div class="ts-panel ts-auth" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+            <button type="button" onclick="closeAuth()" aria-label="Đóng" class="ts-auth-close">
+                <i class="fa-solid fa-xmark text-xs"></i>
+            </button>
+
+            <div class="ts-auth-top">
+                <div class="ts-auth-logo"><i class="fa-solid fa-leaf"></i></div>
+                <h2 id="auth-title" class="font-serif font-bold text-2xl text-retro-dark">Chào mừng đến T SETUP</h2>
+                <p id="auth-sub" class="text-xs text-retro-sub mt-1"></p>
+            </div>
+
+            <div class="ts-tabs" role="tablist" aria-label="Đăng nhập hoặc đăng ký">
+                <button type="button" role="tab" id="tab-login" data-auth-tab="login" aria-selected="true" aria-controls="login-form">Đăng nhập</button>
+                <button type="button" role="tab" id="tab-register" data-auth-tab="register" aria-selected="false" aria-controls="register-form">Đăng ký</button>
+            </div>
+            <p id="auth-note" class="ts-auth-note" hidden></p>
+
+            <!-- Đăng nhập -->
+            <form id="login-form" class="ts-auth-form" novalidate role="tabpanel" aria-labelledby="tab-login">
+                <div class="ts-fieldwrap">
+                    <label class="ts-label" for="login-email">Email</label>
+                    <input id="login-email" name="email" type="email" class="ts-input" autocomplete="email" inputmode="email" placeholder="ban@example.com" aria-describedby="login-email-err">
+                    <p id="login-email-err" class="ts-err" hidden></p>
+                </div>
+                <div class="ts-fieldwrap">
+                    <label class="ts-label" for="login-password">Mật khẩu</label>
+                    <div class="ts-pw">
+                        <input id="login-password" name="password" type="password" class="ts-input" autocomplete="current-password" placeholder="Nhập mật khẩu" aria-describedby="login-password-err">
+                        <button type="button" class="ts-eye" data-pw="login-password" aria-label="Hiện mật khẩu" aria-pressed="false"><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                    <p id="login-password-err" class="ts-err" hidden></p>
+                </div>
+                <label class="ts-check"><input id="login-remember" type="checkbox" checked> <span>Ghi nhớ đăng nhập trên thiết bị này</span></label>
+                <div id="login-error" class="ts-formerr" role="alert" hidden></div>
+                <button id="login-submit" type="submit" class="ts-btn ts-btn-primary ts-btn-block">Đăng nhập</button>
+                <p class="ts-auth-switch">Chưa có tài khoản? <button type="button" data-auth-tab="register">Đăng ký ngay</button></p>
+            </form>
+
+            <!-- Đăng ký -->
+            <form id="register-form" class="ts-auth-form" novalidate hidden role="tabpanel" aria-labelledby="tab-register">
+                <div class="ts-fieldwrap">
+                    <label class="ts-label" for="reg-name">Họ và tên *</label>
+                    <input id="reg-name" name="name" type="text" class="ts-input" autocomplete="name" maxlength="60" placeholder="Ví dụ: Huỳnh Minh Tiến" aria-describedby="reg-name-err">
+                    <p id="reg-name-err" class="ts-err" hidden></p>
+                </div>
+                <div class="ts-fieldwrap">
+                    <label class="ts-label" for="reg-email">Email *</label>
+                    <input id="reg-email" name="email" type="email" class="ts-input" autocomplete="email" inputmode="email" maxlength="120" placeholder="ban@example.com" aria-describedby="reg-email-err">
+                    <p id="reg-email-err" class="ts-err" hidden></p>
+                </div>
+                <div class="ts-fieldwrap">
+                    <label class="ts-label" for="reg-phone">Số điện thoại (không bắt buộc)</label>
+                    <input id="reg-phone" name="phone" type="tel" class="ts-input" autocomplete="tel" inputmode="tel" maxlength="16" placeholder="0900 123 456" aria-describedby="reg-phone-err">
+                    <p id="reg-phone-err" class="ts-err" hidden></p>
+                </div>
+                <div class="ts-fieldwrap">
+                    <label class="ts-label" for="reg-password">Mật khẩu *</label>
+                    <div class="ts-pw">
+                        <input id="reg-password" name="password" type="password" class="ts-input" autocomplete="new-password" placeholder="Tối thiểu 8 ký tự, có chữ và số" aria-describedby="reg-password-err reg-meter-txt">
+                        <button type="button" class="ts-eye" data-pw="reg-password" aria-label="Hiện mật khẩu" aria-pressed="false"><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                    <div class="ts-meter" aria-hidden="true"><i id="reg-meter-bar"></i></div>
+                    <p id="reg-meter-txt" class="ts-meter-txt"></p>
+                    <p id="reg-password-err" class="ts-err" hidden></p>
+                </div>
+                <div class="ts-fieldwrap">
+                    <label class="ts-label" for="reg-confirm">Nhập lại mật khẩu *</label>
+                    <div class="ts-pw">
+                        <input id="reg-confirm" name="confirm" type="password" class="ts-input" autocomplete="new-password" placeholder="Nhập lại mật khẩu" aria-describedby="reg-confirm-err">
+                        <button type="button" class="ts-eye" data-pw="reg-confirm" aria-label="Hiện mật khẩu" aria-pressed="false"><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                    <p id="reg-confirm-err" class="ts-err" hidden></p>
+                </div>
+                <div class="ts-fieldwrap">
+                    <label class="ts-check"><input id="reg-agree" type="checkbox" aria-describedby="reg-agree-err"> <span>Tôi đồng ý với chính sách bảo mật và điều khoản sử dụng của T SETUP. *</span></label>
+                    <p id="reg-agree-err" class="ts-err" hidden></p>
+                </div>
+                <label class="ts-check"><input id="reg-news" type="checkbox"> <span>Nhận email về combo mới và ưu đãi (không bắt buộc).</span></label>
+                <div id="reg-error" class="ts-formerr" role="alert" hidden></div>
+                <button id="reg-submit" type="submit" class="ts-btn ts-btn-primary ts-btn-block">Tạo tài khoản</button>
+                <p class="ts-auth-switch">Đã có tài khoản? <button type="button" data-auth-tab="login">Đăng nhập</button></p>
+            </form>
+
+            <p class="ts-auth-demo"><i class="fa-solid fa-circle-info"></i> Bản demo: thông tin tài khoản chỉ được lưu trên trình duyệt này.</p>
         </div>
     </div>
 
@@ -2814,14 +3075,14 @@
                 const c = categories[key];
                 const n = products.filter((p) => p.category === key).length;
                 return `
-                <button type="button" data-cat="${key}" class="group p-4 rounded-2xl border border-retro-border bg-retro-paper text-center hard-shadow">
+                <a href="#/danh-muc/${key}" class="block group p-4 rounded-2xl border border-retro-border bg-retro-paper text-center hard-shadow">
                     <div class="w-14 h-14 rounded-full bg-retro-bg border border-retro-border mx-auto flex items-center justify-center text-retro-dark text-xl group-hover:bg-retro-olive group-hover:text-white group-hover:border-retro-dark transition-colors mb-3">
                         <i class="fa-solid ${c.icon}"></i>
                     </div>
                     <h3 class="font-bold text-xs text-retro-dark">${esc(c.label)}</h3>
                     <p class="text-[11px] text-retro-sub mt-0.5 leading-snug">${esc(c.sub)}</p>
                     <p class="text-[11px] text-retro-olive font-semibold mt-1">${n} sản phẩm</p>
-                </button>`;
+                </a>`;
             }).join('');
         }
 
@@ -2857,10 +3118,7 @@
                 if (!q) return true;
                 return normalize(p.name + ' ' + p.desc + ' ' + catOf(p).label).includes(q);
             });
-            if (sortMode === 'price-asc') list.sort((a, b) => a.price - b.price);
-            else if (sortMode === 'price-desc') list.sort((a, b) => b.price - a.price);
-            else if (sortMode === 'rating') list.sort((a, b) => b.rating - a.rating || b.reviews - a.reviews);
-            return list;
+            return sortBy(list, sortMode);
         }
 
         function ratingHTML(p) {
@@ -3023,7 +3281,7 @@
         function comboCard(c) {
             const chips = c.itemsData.map((p) => `<span class="text-[11px] font-medium text-retro-dark bg-retro-bg border border-retro-border rounded-full px-2.5 py-0.5">${esc(shortOf(p))}</span>`).join('');
             return `
-            <article class="bg-retro-paper rounded-2xl overflow-hidden border border-retro-border flex flex-col">
+            <article id="combo-card-${c.id}" class="bg-retro-paper rounded-2xl overflow-hidden border border-retro-border flex flex-col">
                 <div class="relative overflow-hidden h-56">
                     ${mediaHTML({ slides: comboSlides(c.itemsData), animated: c.animated, cover: c.cover })}
                     <span class="sticker absolute top-3 left-3">${esc(c.badge)}</span>
@@ -3228,7 +3486,9 @@
         function updateCartUI() {
             cart = cart.filter((l) => lineInfo(l.key)); // bỏ dòng của sản phẩm / combo đã bị xóa
             saveCart();
-            $('cart-badge').textContent = cart.reduce((s, l) => s + l.quantity, 0);
+            const cartCount = cart.reduce((s, l) => s + l.quantity, 0);
+            $('cart-badge').textContent = cartCount;
+            if ($('dd-user-cart')) $('dd-user-cart').textContent = cartCount + ' sản phẩm';
 
             const container = $('cart-items-container');
             if (!cart.length) {
@@ -3714,22 +3974,684 @@
         }
 
         // ============================================================
+        //  4J) MENU SỔ XUỐNG · ĐIỀU HƯỚNG TRANG · TRANG DANH MỤC
+        //      Địa chỉ trang dạng:  #/danh-muc/<mã danh mục>   và   #/san-pham[/<kiểu xem>]
+        //      Mọi địa chỉ khác (#products, #combos…) vẫn là trang chủ, cuộn tới đúng mục.
+        // ============================================================
+        const BASE_TITLE = document.title;
+        const hasOwn = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
+
+        const LIST_MODES = {
+            'all':        { label: 'Tất cả sản phẩm',   sub: 'Toàn bộ đồ decor bàn học, bàn làm việc và gear tông sáng của T SETUP.', icon: 'fa-table-cells-large',     sort: 'default',    sale: false },
+            'rating':     { label: 'Đánh giá cao nhất', sub: 'Những sản phẩm được khách chấm điểm cao nhất, xếp từ trên xuống.',      icon: 'fa-star',                  sort: 'rating',     sale: false },
+            'sale':       { label: 'Đang giảm giá',     sub: 'Các sản phẩm đang có giá thấp hơn giá niêm yết.',                         icon: 'fa-tags',                  sort: 'default',    sale: true  },
+            'price-asc':  { label: 'Giá thấp đến cao',  sub: 'Sắp xếp từ sản phẩm rẻ nhất đến đắt nhất.',                              icon: 'fa-arrow-down-short-wide', sort: 'price-asc',  sale: false },
+            'price-desc': { label: 'Giá cao đến thấp',  sub: 'Sắp xếp từ sản phẩm đắt nhất đến rẻ nhất.',                               icon: 'fa-arrow-up-wide-short',   sort: 'price-desc', sale: false },
+        };
+
+        let listState = { cat: 'all', mode: 'all', sort: 'default', saleOnly: false, missing: '' };
+        let homeScrollY = 0;
+        let navByClick = false, navClickTimer = null;
+
+        function sortBy(items, mode) {
+            if (mode === 'price-asc') items.sort((a, b) => a.price - b.price);
+            else if (mode === 'price-desc') items.sort((a, b) => b.price - a.price);
+            else if (mode === 'rating') items.sort((a, b) => b.rating - a.rating || b.reviews - a.reviews);
+            return items;
+        }
+
+        // ----- Nội dung các menu sổ xuống (tạo từ dữ liệu thật nên luôn đúng số lượng) -----
+        function ddItem(href, icon, title, sub, cls) {
+            return `<a href="${href}" class="ts-dd-item${cls ? ' ' + cls : ''}"><span class="ts-dd-ico"><i class="fa-solid ${icon}"></i></span><span class="ts-dd-txt"><b>${esc(title)}</b>${sub ? `<small>${esc(sub)}</small>` : ''}</span></a>`;
+        }
+
+        function renderNav() {
+            const nOf = (k) => products.filter((p) => p.category === k).length;
+            const nSale = products.filter((p) => p.oldPrice > p.price).length;
+            const catKeys = Object.keys(categories);
+
+            const cats = catKeys.map((k) => ddItem('#/danh-muc/' + k, categories[k].icon, categories[k].label, nOf(k) + ' sản phẩm')).join('');
+            const modeSubs = { 'all': products.length + ' sản phẩm', 'rating': 'Điểm cao xếp trước', 'sale': nSale + ' sản phẩm đang giảm', 'price-asc': 'Rẻ nhất xếp trước', 'price-desc': 'Đắt nhất xếp trước' };
+            const modes = Object.keys(LIST_MODES).map((k) => ddItem(k === 'all' ? '#/san-pham' : '#/san-pham/' + k, LIST_MODES[k].icon, LIST_MODES[k].label, modeSubs[k])).join('')
+                + ddItem('#recent', 'fa-clock-rotate-left', 'Sản phẩm bạn đã xem', 'Xem lại nhanh');
+            const combos = getCombos().map((c) => ddItem('#combo-card-' + c.id, 'fa-gift', c.title, c.itemsData.length + ' món · ' + formatPrice(c.price))).join('')
+                + ddItem('#combo-builder', 'fa-hand-pointer', 'Tự tạo combo của bạn', 'Chọn sản phẩm theo ý thích', 'ts-dd-accent');
+            const foot = (href, text) => `<a href="${href}" class="ts-dd-foot">${text} <i class="fa-solid fa-arrow-right"></i></a>`;
+
+            $('dd-categories').innerHTML = `<p class="ts-dd-title">Danh mục sản phẩm</p><div class="ts-dd-grid">${cats}</div>${foot('#/san-pham', 'Xem tất cả sản phẩm')}`;
+            $('dd-products').innerHTML = `<p class="ts-dd-title">Xem sản phẩm theo</p>${modes}`;
+            $('dd-combos').innerHTML = `<p class="ts-dd-title">Combo gợi ý</p>${combos}${foot('#combos', 'Xem tất cả combo')}`;
+
+            $('m-categories').innerHTML = cats + ddItem('#/san-pham', 'fa-table-cells-large', 'Xem tất cả sản phẩm', '');
+            $('m-products').innerHTML = modes;
+            $('m-combos').innerHTML = combos;
+        }
+
+        function renderFooterLinks() {
+            $('footer-cats').innerHTML = Object.keys(categories).map((k) => `<li><a href="#/danh-muc/${k}" class="hover:text-retro-olive transition">${esc(categories[k].label)}</a></li>`).join('')
+                + '<li><a href="#" data-open-manage="1" class="hover:text-retro-olive transition">Quản lý sản phẩm</a></li>';
+        }
+
+        // ----- Hành vi của menu sổ xuống: rê chuột, bấm, bàn phím, chạm trên điện thoại -----
+        const hoverCapable = !!(window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches);
+        const ddTimers = new WeakMap();
+        const ddOf = (el) => (el && el.closest ? el.closest('.ts-dd') : null);
+
+        function placeDD(dd) {
+            const panel = dd.querySelector('.ts-dd-panel');
+            if (!panel) return;
+            panel.style.removeProperty('--ts-shift');
+            const r = panel.getBoundingClientRect();
+            const vw = document.documentElement.clientWidth;
+            let shift = 0;
+            if (r.left < 8) shift = 8 - r.left;
+            else if (r.right > vw - 8) shift = vw - 8 - r.right;
+            if (shift) panel.style.setProperty('--ts-shift', Math.round(shift) + 'px');
+        }
+        function setDD(dd, open) {
+            dd.classList.toggle('is-open', open);
+            const b = dd.querySelector('.ts-dd-toggle');
+            if (b) b.setAttribute('aria-expanded', String(open));
+            if (open) placeDD(dd);
+        }
+        function closeDDs(except) {
+            document.querySelectorAll('.ts-dd.is-open').forEach((d) => { if (d !== except) setDD(d, false); });
+        }
+
+        if (hoverCapable) {
+            document.addEventListener('mouseover', (e) => {
+                const dd = ddOf(e.target);
+                if (!dd) return;
+                clearTimeout(ddTimers.get(dd));
+                if (!dd.classList.contains('is-open')) { closeDDs(dd); setDD(dd, true); }
+            });
+            document.addEventListener('mouseout', (e) => {
+                const dd = ddOf(e.target);
+                if (dd && !dd.contains(e.relatedTarget)) ddTimers.set(dd, setTimeout(() => setDD(dd, false), 180));
+            });
+        }
+
+        document.addEventListener('focusout', (e) => {
+            const dd = ddOf(e.target);
+            if (dd && dd.classList.contains('is-open') && e.relatedTarget && !dd.contains(e.relatedTarget)) setDD(dd, false);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            const dd = ddOf(e.target);
+            if (!dd) return;
+            const items = Array.from(dd.querySelectorAll('.ts-dd-panel a, .ts-dd-panel button'));
+            const onToggle = e.target.classList && e.target.classList.contains('ts-dd-toggle');
+            if (e.key === 'Escape' && dd.classList.contains('is-open')) {
+                setDD(dd, false);
+                const b = dd.querySelector('.ts-dd-toggle');
+                if (b) b.focus();
+                return;
+            }
+            if (onToggle && e.key === 'ArrowDown') {
+                e.preventDefault();
+                closeDDs(dd); setDD(dd, true);
+                if (items[0]) items[0].focus();
+            } else if (!onToggle && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+                e.preventDefault();
+                const i = items.indexOf(document.activeElement);
+                const next = items[(i + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length];
+                if (next) next.focus();
+            }
+        });
+
+        // ----- Trang danh sách (danh mục / sản phẩm) -----
+        function listItems() {
+            const s = listState, q = normalize(searchTerm);
+            return sortBy(products.filter((p) => {
+                if (s.cat !== 'all' && p.category !== s.cat) return false;
+                if (s.saleOnly && !(p.oldPrice > p.price)) return false;
+                return !q || normalize(p.name + ' ' + p.desc + ' ' + catOf(p).label).includes(q);
+            }), s.sort);
+        }
+
+        function renderList() {
+            if ($('view-list').hidden) return;
+            const s = listState;
+            const cat = !s.missing && s.cat !== 'all' ? categories[s.cat] : null;
+            const mode = LIST_MODES[s.mode];
+            const total = cat ? products.filter((p) => p.category === s.cat).length : products.length;
+            const q = searchTerm.trim();
+
+            let eyebrow, title, sub, icon, crumbs;
+            if (s.missing) {
+                eyebrow = 'Không tìm thấy'; title = 'Danh mục này không tồn tại'; icon = 'fa-circle-question';
+                sub = 'Đường dẫn có thể bị sai hoặc danh mục đã bị xóa. Hãy chọn một danh mục bên dưới.';
+                crumbs = [['#', 'Trang chủ'], ['#categories', 'Danh mục'], [null, 'Không tìm thấy']];
+            } else if (cat) {
+                eyebrow = 'Danh mục'; title = cat.label; icon = cat.icon;
+                sub = `${cat.sub}. Danh mục này đang có ${total} sản phẩm.`;
+                crumbs = [['#', 'Trang chủ'], ['#categories', 'Danh mục'], [null, cat.label]];
+            } else {
+                eyebrow = 'Sản phẩm'; title = mode.label; sub = mode.sub; icon = mode.icon;
+                crumbs = s.mode === 'all' ? [['#', 'Trang chủ'], [null, 'Tất cả sản phẩm']] : [['#', 'Trang chủ'], ['#/san-pham', 'Sản phẩm'], [null, mode.label]];
+            }
+
+            document.title = `${title} – T SETUP`;
+            $('list-crumbs').innerHTML = crumbs.map(([href, label]) => (href ? `<a href="${href}">${esc(label)}</a>` : `<span aria-current="page">${esc(label)}</span>`)).join('<span class="sep" aria-hidden="true">›</span>');
+            $('list-icon').innerHTML = `<i class="fa-solid ${icon}"></i>`;
+            $('list-eyebrow').textContent = eyebrow;
+            $('list-title').textContent = title;
+            $('list-sub').textContent = sub;
+
+            // thanh chọn danh mục: bấm để sang trang danh mục khác
+            const activeKey = cat ? s.cat : (s.missing ? '' : 'all');
+            const chip = (href, key, label, n) => `<a href="${href}" class="filter-btn${key === activeKey ? ' is-active' : ''}"${key === activeKey ? ' aria-current="page"' : ''}>${esc(label)} <span class="ts-chip-n">${n}</span></a>`;
+            $('list-chips').innerHTML = chip('#/san-pham', 'all', 'Tất cả', products.length)
+                + Object.keys(categories).map((k) => chip('#/danh-muc/' + k, k, categories[k].label, products.filter((p) => p.category === k).length)).join('');
+
+            $('list-sort').value = s.sort;
+            $('list-sale').setAttribute('aria-pressed', String(s.saleOnly));
+
+            const grid = $('list-grid');
+            if (s.missing) {
+                $('list-count').textContent = '';
+                grid.innerHTML = `<div class="ts-empty"><i class="fa-regular fa-face-smile-wink"></i><p>Không có danh mục nào có tên “${esc(s.missing)}”.</p><div class="ts-empty-actions"><a href="#/san-pham" class="ts-btn ts-btn-primary">Xem tất cả sản phẩm</a><a href="#categories" class="ts-btn">Về danh sách danh mục</a></div></div>`;
+                return;
+            }
+
+            const items = listItems();
+            const parts = [];
+            if (cat) parts.push(`trong “${cat.label}”`);
+            if (s.saleOnly) parts.push('đang giảm giá');
+            if (q) parts.push(`khớp “${q}”`);
+            $('list-count').textContent = items.length ? `Đang hiển thị ${items.length} sản phẩm${parts.length ? ' ' + parts.join(', ') : ''}` : '';
+
+            if (!items.length) {
+                const emptyCat = cat && total === 0;
+                grid.innerHTML = `<div class="ts-empty"><i class="fa-regular fa-face-smile-wink"></i>
+                    <p>${emptyCat ? 'Danh mục này chưa có sản phẩm nào.' : 'Không có sản phẩm nào phù hợp với bộ lọc hiện tại.'}</p>
+                    <div class="ts-empty-actions">
+                        ${emptyCat ? '<button type="button" data-open-manage="1" class="ts-btn ts-btn-primary"><i class="fa-solid fa-sliders"></i> Quản lý sản phẩm</button>' : '<button type="button" onclick="resetListFilters()" class="ts-btn ts-btn-primary">Xóa bộ lọc</button>'}
+                        ${cat ? '<a href="#/san-pham" class="ts-btn">Xem tất cả sản phẩm</a>' : ''}
+                    </div></div>`;
+                return;
+            }
+            grid.innerHTML = items.map(productCard).join('');
+        }
+
+        function resetListFilters() {
+            searchTerm = '';
+            $('search-input').value = '';
+            $('search-input-mobile').value = '';
+            listState.saleOnly = false;
+            renderList();
+            renderProducts();
+        }
+
+        // ----- Chuyển trang -----
+        function parseRoute(hash) {
+            let h = String(hash || '').replace(/^#/, '');
+            try { h = decodeURIComponent(h); } catch (e) { /* giữ nguyên nếu địa chỉ sai */ }
+            let m = h.match(/^\/danh-muc\/([^/]+)\/?$/);
+            if (m) return { page: 'list', cat: m[1], mode: 'all' };
+            m = h.match(/^\/san-pham(?:\/([^/]+))?\/?$/);
+            if (m) return { page: 'list', cat: 'all', mode: m[1] || 'all' };
+            return { page: 'home', anchor: h.charAt(0) === '/' ? '' : h };
+        }
+
+        function showHome(anchor, cameFromList) {
+            $('view-list').hidden = true;
+            $('view-home').hidden = false;
+            document.title = BASE_TITLE;
+            const el = anchor ? document.getElementById(anchor) : null;
+            const inHome = !!(el && $('view-home').contains(el));
+            if (cameFromList) {
+                // đổi từ trang danh sách về trang chủ: tự cuộn, vì trình duyệt không biết nội dung đã đổi
+                if (inHome) el.scrollIntoView({ behavior: 'instant', block: 'start' });
+                else window.scrollTo({ top: navByClick ? 0 : homeScrollY, behavior: 'instant' });
+            }
+            if (inHome && /^combo-card-/.test(anchor)) {
+                el.classList.remove('ts-flash');
+                void el.offsetWidth;
+                el.classList.add('ts-flash');
+                setTimeout(() => el.classList.remove('ts-flash'), 2000);
+            }
+        }
+
+        function showList(r, cameFromHome) {
+            if (cameFromHome) homeScrollY = window.scrollY;
+            const mode = hasOwn(LIST_MODES, r.mode) ? r.mode : 'all';
+            const known = r.cat === 'all' || hasOwn(categories, r.cat);
+            listState = { cat: known ? r.cat : 'all', mode, sort: LIST_MODES[mode].sort, saleOnly: LIST_MODES[mode].sale, missing: known ? '' : r.cat };
+            $('view-home').hidden = true;
+            $('view-list').hidden = false;
+            renderList();
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+
+        function applyRoute() {
+            const r = parseRoute(location.hash);
+            const wasHome = !$('view-home').hidden;
+            closeDDs(null);
+            $('mobile-menu').classList.add('hidden');
+            if (r.page === 'list') showList(r, wasHome);
+            else showHome(r.anchor, !wasHome);
+            navByClick = false;
+        }
+
+        window.addEventListener('hashchange', applyRoute);
+        document.addEventListener('click', (e) => {
+            if (e.target.closest && e.target.closest('a[href^="#"]')) {
+                navByClick = true;
+                clearTimeout(navClickTimer);
+                navClickTimer = setTimeout(() => { navByClick = false; }, 500);
+            }
+        }, true);
+
+        $('list-sort').addEventListener('change', (e) => { listState.sort = e.target.value; renderList(); });
+        $('list-sale').addEventListener('click', () => { listState.saleOnly = !listState.saleOnly; renderList(); });
+
+        // ============================================================
+        //  4K) TÀI KHOẢN: ĐĂNG KÝ · ĐĂNG NHẬP  (BẢN DEMO, lưu ngay trên trình duyệt)
+        //      Mật khẩu không được lưu nguyên văn: chỉ lưu bản băm (PBKDF2-SHA256 kèm "muối" ngẫu nhiên).
+        //      Trang web thật cần máy chủ (PHP + cơ sở dữ liệu) để lưu và kiểm tra tài khoản.
+        // ============================================================
+        const USERS_KEY       = 'tsetup_users_v1';
+        const SESSION_KEY     = 'tsetup_session_v1';
+        const PW_MIN          = 8;
+        const PW_ITER         = 100000;
+        const LOGIN_MAX_FAILS = 5;
+        const LOGIN_LOCK_MS   = 30000;
+        const EMAIL_RE        = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+        const PHONE_RE        = /^(?:0|\+?84)\d{9}$/;
+
+        let users = [];
+        let currentUser = null;
+        let authOpener = null;
+        const loginFails = {};          // email -> { n, until }
+
+        // ----- Lưu trữ -----
+        function loadUsers() {
+            const u = readJSON(USERS_KEY, []);
+            users = Array.isArray(u) ? u.filter((x) => x && x.id && x.email && x.hash) : [];
+        }
+        function saveUsers() { return writeJSON(USERS_KEY, users); }
+        function readSessionId() {
+            try { return localStorage.getItem(SESSION_KEY) || sessionStorage.getItem(SESSION_KEY) || null; } catch (e) { return null; }
+        }
+        function writeSession(id, remember) {
+            try {
+                localStorage.removeItem(SESSION_KEY);
+                sessionStorage.removeItem(SESSION_KEY);
+                (remember ? localStorage : sessionStorage).setItem(SESSION_KEY, id);
+            } catch (e) { /* bỏ qua nếu bị chặn */ }
+        }
+        function clearSession() {
+            try { localStorage.removeItem(SESSION_KEY); sessionStorage.removeItem(SESSION_KEY); } catch (e) { /* bỏ qua */ }
+        }
+        function loadSession() {
+            const id = readSessionId();
+            currentUser = id ? (users.find((u) => u.id === id) || null) : null;
+            if (id && !currentUser) clearSession();
+        }
+
+        // ----- Băm mật khẩu -----
+        const canPBKDF2 = () => !!(window.crypto && window.crypto.subtle && window.TextEncoder);
+        const preferredAlgo = () => (canPBKDF2() ? 'pbkdf2' : 'simple');
+        function toHex(buf) { return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, '0')).join(''); }
+        function randomHex(n) {
+            const a = new Uint8Array(n);
+            if (window.crypto && window.crypto.getRandomValues) window.crypto.getRandomValues(a);
+            else for (let i = 0; i < n; i++) a[i] = Math.floor(Math.random() * 256);
+            return toHex(a);
+        }
+        // Băm dự phòng cho trình duyệt không có crypto.subtle (trang mở bằng http, không phải https/localhost)
+        function cyrb53(str) {
+            let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+            for (let i = 0, ch; i < str.length; i++) {
+                ch = str.charCodeAt(i);
+                h1 = Math.imul(h1 ^ ch, 2654435761);
+                h2 = Math.imul(h2 ^ ch, 1597334677);
+            }
+            h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+            h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+            return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(16);
+        }
+        async function hashPassword(pw, salt, algo) {
+            if (algo === 'pbkdf2') {
+                if (!canPBKDF2()) return null;
+                const enc = new TextEncoder();
+                const key = await crypto.subtle.importKey('raw', enc.encode(pw), 'PBKDF2', false, ['deriveBits']);
+                const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', salt: enc.encode(salt), iterations: PW_ITER, hash: 'SHA-256' }, key, 256);
+                return toHex(bits);
+            }
+            return cyrb53(salt + ':' + pw);
+        }
+
+        // ----- Kiểm tra dữ liệu nhập -----
+        function passwordScore(pw) {
+            let s = 0;
+            if (pw.length >= PW_MIN) s++;
+            if (pw.length >= 12) s++;
+            if (/[a-z]/.test(pw) && /[A-Z]/.test(pw)) s++;
+            if (/\d/.test(pw) && /[A-Za-z]/.test(pw)) s++;
+            if (/[^A-Za-z0-9]/.test(pw)) s++;
+            return s;
+        }
+        function validateRegister(d) {
+            const e = {};
+            if (!d.name) e.name = 'Vui lòng nhập họ và tên.';
+            else if (d.name.length < 2) e.name = 'Họ và tên cần ít nhất 2 ký tự.';
+            if (!d.email) e.email = 'Vui lòng nhập email.';
+            else if (!EMAIL_RE.test(d.email)) e.email = 'Email chưa đúng định dạng, ví dụ: ban@example.com.';
+            if (d.phone && !PHONE_RE.test(d.phone)) e.phone = 'Số điện thoại gồm 10 số, bắt đầu bằng 0 (ví dụ 0900123456).';
+            if (!d.password) e.password = 'Vui lòng nhập mật khẩu.';
+            else if (d.password.length < PW_MIN) e.password = `Mật khẩu cần ít nhất ${PW_MIN} ký tự.`;
+            else if (!/[A-Za-z]/.test(d.password) || !/\d/.test(d.password)) e.password = 'Mật khẩu cần có cả chữ và số.';
+            if (!d.confirm) e.confirm = 'Vui lòng nhập lại mật khẩu.';
+            else if (d.confirm !== d.password) e.confirm = 'Mật khẩu nhập lại chưa khớp.';
+            if (!d.agree) e.agree = 'Bạn cần đồng ý với chính sách để tạo tài khoản.';
+            return e;
+        }
+
+        const REG_FIELDS   = { name: 'reg-name', email: 'reg-email', phone: 'reg-phone', password: 'reg-password', confirm: 'reg-confirm', agree: 'reg-agree' };
+        const LOGIN_FIELDS = { email: 'login-email', password: 'login-password' };
+
+        function setFieldError(id, msg) {
+            const input = $(id), err = $(id + '-err');
+            if (!input || !err) return;
+            input.setAttribute('aria-invalid', msg ? 'true' : 'false');
+            err.textContent = msg || '';
+            err.hidden = !msg;
+        }
+        // Hiện lỗi cho các ô; trả về ô lỗi đầu tiên để đưa con trỏ tới đó
+        function showFieldErrors(fields, errs) {
+            let first = null;
+            Object.keys(fields).forEach((k) => {
+                setFieldError(fields[k], errs[k]);
+                if (errs[k] && !first) first = $(fields[k]);
+            });
+            return first;
+        }
+        function showFormError(id, html) {
+            const box = $(id);
+            box.innerHTML = html || '';
+            box.hidden = !html;
+        }
+        function setBusy(btn, busy, text) {
+            if (busy) { btn.dataset.label = btn.textContent; btn.textContent = text; }
+            else if (btn.dataset.label) { btn.textContent = btn.dataset.label; }
+            btn.disabled = busy;
+        }
+
+        // ----- Mở / đóng cửa sổ -----
+        function switchAuthTab(tab) {
+            const isLogin = tab !== 'register';
+            $('tab-login').setAttribute('aria-selected', String(isLogin));
+            $('tab-register').setAttribute('aria-selected', String(!isLogin));
+            $('login-form').hidden = !isLogin;
+            $('register-form').hidden = isLogin;
+            $('auth-sub').textContent = isLogin ? 'Đăng nhập để tiếp tục mua sắm.' : 'Tạo tài khoản miễn phí, chỉ mất một phút.';
+        }
+        function resetAuthForms() {
+            ['login-form', 'register-form'].forEach((id) => $(id).reset());
+            showFieldErrors(LOGIN_FIELDS, {});
+            showFieldErrors(REG_FIELDS, {});
+            showFormError('login-error', '');
+            showFormError('reg-error', '');
+            document.querySelectorAll('#auth-modal [data-pw]').forEach((b) => setPasswordVisible(b, false));
+            updateStrength();
+        }
+        function openAuth(tab, note) {
+            closeDDs(null);
+            authOpener = document.activeElement;
+            $('auth-modal').hidden = false;
+            document.body.classList.add('overflow-hidden');
+            switchAuthTab(tab);
+            const n = $('auth-note');
+            n.textContent = note || '';
+            n.hidden = !note;
+            setTimeout(() => { const f = $(tab === 'register' ? 'reg-name' : 'login-email'); if (f) f.focus(); }, 30);
+        }
+        function closeAuth() {
+            if ($('auth-modal').hidden) return;
+            $('auth-modal').hidden = true;
+            document.body.classList.remove('overflow-hidden');
+            resetAuthForms();
+            if (authOpener && document.contains(authOpener) && authOpener.focus) authOpener.focus();
+            authOpener = null;
+        }
+        function setPasswordVisible(btn, show) {
+            const input = $(btn.dataset.pw);
+            if (!input) return;
+            input.type = show ? 'text' : 'password';
+            btn.setAttribute('aria-pressed', String(show));
+            btn.setAttribute('aria-label', show ? 'Ẩn mật khẩu' : 'Hiện mật khẩu');
+            btn.innerHTML = `<i class="fa-regular ${show ? 'fa-eye-slash' : 'fa-eye'}"></i>`;
+        }
+        function updateStrength() {
+            const pw = $('reg-password').value;
+            const bar = $('reg-meter-bar'), txt = $('reg-meter-txt');
+            if (!pw) { bar.style.width = '0'; txt.textContent = ''; return; }
+            const s = passwordScore(pw);
+            const level = s <= 2 ? { w: '33%', c: '#A63D2F', t: 'Mật khẩu yếu' } : (s === 3 ? { w: '66%', c: '#D9A547', t: 'Mật khẩu trung bình' } : { w: '100%', c: '#3E6B2A', t: 'Mật khẩu mạnh' });
+            bar.style.width = level.w;
+            bar.style.background = level.c;
+            txt.textContent = level.t;
+        }
+
+        // ----- Đăng ký -----
+        async function submitRegister(e) {
+            e.preventDefault();
+            const d = {
+                name: $('reg-name').value.replace(/\s+/g, ' ').trim(),
+                email: $('reg-email').value.trim().toLowerCase(),
+                phone: $('reg-phone').value.replace(/[\s.\-()]/g, ''),
+                password: $('reg-password').value,
+                confirm: $('reg-confirm').value,
+                agree: $('reg-agree').checked,
+                newsletter: $('reg-news').checked,
+            };
+            showFormError('reg-error', '');
+            const errs = validateRegister(d);
+            loadUsers();                                      // lấy dữ liệu mới nhất (phòng khi mở nhiều tab)
+            if (!errs.email && users.some((u) => u.email === d.email)) errs.email = 'Email này đã được đăng ký.';
+            const first = showFieldErrors(REG_FIELDS, errs);
+            if (first) {
+                first.focus();
+                if (errs.email === 'Email này đã được đăng ký.') showFormError('reg-error', 'Bạn đã có tài khoản với email này. <button type="button" data-auth-tab="login" data-prefill="1">Đăng nhập</button>');
+                return;
+            }
+            const btn = $('reg-submit');
+            setBusy(btn, true, 'Đang tạo tài khoản...');
+            try {
+                const salt = randomHex(16), algo = preferredAlgo();
+                const user = { id: 'u' + Date.now().toString(36) + randomHex(3), name: d.name, email: d.email, phone: d.phone, salt, algo, hash: await hashPassword(d.password, salt, algo), newsletter: d.newsletter, createdAt: new Date().toISOString() };
+                users.push(user);
+                if (!saveUsers()) {
+                    users.pop();
+                    showFormError('reg-error', 'Trình duyệt đang chặn việc lưu dữ liệu nên chưa tạo được tài khoản. Hãy bật lưu trữ cho trang này rồi thử lại.');
+                    return;
+                }
+                writeSession(user.id, true);
+                currentUser = user;
+                closeAuth();
+                renderAuth();
+                showToast(`Tạo tài khoản thành công. Chào mừng ${givenName(user)} đến với T SETUP!`);
+            } catch (err) {
+                showFormError('reg-error', 'Có lỗi khi tạo tài khoản. Vui lòng thử lại.');
+            } finally {
+                setBusy(btn, false);
+            }
+        }
+
+        // ----- Đăng nhập -----
+        async function submitLogin(e) {
+            e.preventDefault();
+            const email = $('login-email').value.trim().toLowerCase();
+            const pw = $('login-password').value;
+            const errs = {};
+            if (!email) errs.email = 'Vui lòng nhập email.';
+            else if (!EMAIL_RE.test(email)) errs.email = 'Email chưa đúng định dạng.';
+            if (!pw) errs.password = 'Vui lòng nhập mật khẩu.';
+            showFormError('login-error', '');
+            const first = showFieldErrors(LOGIN_FIELDS, errs);
+            if (first) { first.focus(); return; }
+
+            const f = loginFails[email];
+            if (f && f.until > Date.now()) {
+                showFormError('login-error', `Bạn đã nhập sai nhiều lần. Vui lòng thử lại sau ${Math.ceil((f.until - Date.now()) / 1000)} giây.`);
+                return;
+            }
+            const btn = $('login-submit');
+            setBusy(btn, true, 'Đang đăng nhập...');
+            try {
+                loadUsers();
+                const u = users.find((x) => x.email === email);
+                let ok = false;
+                if (u) {
+                    const h = await hashPassword(pw, u.salt, u.algo);
+                    if (h === null) {
+                        showFormError('login-error', 'Trình duyệt hiện tại không kiểm tra được mật khẩu này. Hãy mở trang bằng https hoặc localhost.');
+                        return;
+                    }
+                    ok = h === u.hash;
+                } else {
+                    await hashPassword(pw, randomHex(16), preferredAlgo());   // giữ thời gian xử lý gần như nhau
+                }
+                if (!ok) {
+                    const rec = loginFails[email] || { n: 0, until: 0 };
+                    rec.n += 1;
+                    if (rec.n >= LOGIN_MAX_FAILS) { rec.n = 0; rec.until = Date.now() + LOGIN_LOCK_MS; }
+                    loginFails[email] = rec;
+                    showFormError('login-error', rec.until > Date.now() ? 'Bạn đã nhập sai nhiều lần. Vui lòng thử lại sau 30 giây.' : 'Email hoặc mật khẩu chưa đúng.');
+                    return;
+                }
+                delete loginFails[email];
+                writeSession(u.id, $('login-remember').checked);
+                currentUser = u;
+                closeAuth();
+                renderAuth();
+                showToast(`Chào mừng trở lại, ${givenName(u)}!`);
+            } catch (err) {
+                showFormError('login-error', 'Có lỗi khi đăng nhập. Vui lòng thử lại.');
+            } finally {
+                setBusy(btn, false);
+            }
+        }
+
+        function logout() {
+            clearSession();
+            currentUser = null;
+            closeDDs(null);
+            renderAuth();
+            showToast('Bạn đã đăng xuất.');
+        }
+
+        // ----- Hiển thị tài khoản trên header và menu điện thoại -----
+        const givenName = (u) => String(u.name).trim().split(/\s+/).pop();
+
+        function renderAuth() {
+            const area = $('auth-area'), mob = $('m-auth');
+            if (!currentUser) {
+                area.innerHTML = `
+                    <button type="button" data-auth="login" class="ts-auth-icon" aria-label="Đăng nhập hoặc đăng ký" title="Đăng nhập / Đăng ký"><i class="fa-regular fa-user"></i></button>
+                    <button type="button" data-auth="login" class="ts-btn ts-auth-text">Đăng Nhập</button>
+                    <button type="button" data-auth="register" class="ts-btn ts-btn-primary ts-auth-text">Đăng Ký</button>`;
+                mob.innerHTML = `
+                    <button type="button" data-auth="login" class="ts-btn">Đăng nhập</button>
+                    <button type="button" data-auth="register" class="ts-btn ts-btn-primary">Đăng ký</button>`;
+                return;
+            }
+            const first = givenName(currentUser);
+            const initial = esc((first.charAt(0) || '?').toUpperCase());
+            const nCart = cart.reduce((s, l) => s + l.quantity, 0);
+            area.innerHTML = `
+                <div class="ts-dd ts-dd-right ts-dd-user">
+                    <button type="button" class="ts-dd-toggle ts-user-btn" aria-expanded="false" aria-controls="dd-user" aria-label="Tài khoản của ${esc(currentUser.name)}">
+                        <span class="ts-avatar">${initial}</span><span class="ts-user-name">${esc(first)}</span><i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="ts-dd-panel"><div id="dd-user" class="ts-dd-card">
+                        <div class="ts-user-head"><span class="ts-avatar ts-avatar-lg">${initial}</span><div><b>${esc(currentUser.name)}</b><small>${esc(currentUser.email)}</small></div></div>
+                        <div class="ts-dd-sep"></div>
+                        <button type="button" data-open-cart="1" class="ts-dd-item"><span class="ts-dd-ico"><i class="fa-solid fa-bag-shopping"></i></span><span class="ts-dd-txt"><b>Giỏ hàng của tôi</b><small id="dd-user-cart">${nCart} sản phẩm</small></span></button>
+                        <button type="button" data-open-manage="1" class="ts-dd-item"><span class="ts-dd-ico"><i class="fa-solid fa-sliders"></i></span><span class="ts-dd-txt"><b>Quản lý sản phẩm</b><small>Thêm, sửa, xóa sản phẩm</small></span></button>
+                        <button type="button" data-logout="1" class="ts-dd-item"><span class="ts-dd-ico"><i class="fa-solid fa-right-from-bracket"></i></span><span class="ts-dd-txt"><b>Đăng xuất</b></span></button>
+                    </div></div>
+                </div>`;
+            mob.innerHTML = `
+                <div class="ts-m-user"><span class="ts-avatar">${initial}</span><div class="min-w-0"><b>${esc(currentUser.name)}</b><small>${esc(currentUser.email)}</small></div></div>
+                <button type="button" data-logout="1" class="ts-btn"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</button>`;
+        }
+
+        // Giữ cửa sổ trong vòng Tab khi đang mở (để bàn phím không "lọt" ra trang phía sau)
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Tab' || $('auth-modal').hidden) return;
+            const f = Array.from($('auth-modal').querySelectorAll('button, input, a[href], select, textarea')).filter((el) => !el.disabled && el.offsetParent !== null);
+            if (!f.length) return;
+            const first = f[0], last = f[f.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        });
+
+        $('login-form').addEventListener('submit', submitLogin);
+        $('register-form').addEventListener('submit', submitRegister);
+        $('reg-password').addEventListener('input', updateStrength);
+        // bắt đầu gõ lại thì xóa thông báo lỗi của ô đó
+        $('auth-modal').addEventListener('input', (e) => {
+            const el = e.target;
+            if (el.id && el.getAttribute('aria-invalid') === 'true') setFieldError(el.id, '');
+        });
+        $('auth-modal').addEventListener('change', (e) => {
+            const el = e.target;
+            if (el.id && el.getAttribute('aria-invalid') === 'true') setFieldError(el.id, '');
+        });
+        // đồng bộ giữa các tab trình duyệt
+        window.addEventListener('storage', (e) => {
+            if (e.key === USERS_KEY || e.key === SESSION_KEY) { loadUsers(); loadSession(); renderAuth(); }
+        });
+
+        // ============================================================
         //  4I) LÀM MỚI TOÀN TRANG + SỰ KIỆN
         // ============================================================
         function refreshAll() {
             rebuildProducts();
             renderCategories();
+            renderNav();
+            renderFooterLinks();
             renderStats();
             renderHero();
             renderProducts();
             renderCombos();
             renderBuilder();
             renderRecent();
+            renderList();
             updateCartUI();
             if (!$('manage-modal').hidden) renderManageList();
         }
 
         document.addEventListener('click', (e) => {
+            // menu sổ xuống: bấm nút mũi tên để mở / đóng (dùng cho điện thoại và bàn phím)
+            const ddBtn = e.target.closest('.ts-dd-toggle');
+            if (ddBtn) {
+                const dd = ddOf(ddBtn);
+                const open = !dd.classList.contains('is-open');
+                closeDDs(dd);
+                setDD(dd, open);
+                return;
+            }
+            if (e.target.closest('.ts-dd-panel a, .ts-dd-panel button') || !e.target.closest('.ts-dd')) closeDDs(null);
+
+            const om = e.target.closest('[data-open-manage]');
+            if (om) { e.preventDefault(); openManage(); return; }
+            const au = e.target.closest('[data-auth]');
+            if (au) { openAuth(au.dataset.auth); return; }
+            const at = e.target.closest('[data-auth-tab]');
+            if (at) {
+                if (at.dataset.prefill && !$('login-email').value) $('login-email').value = $('reg-email').value.trim().toLowerCase();
+                switchAuthTab(at.dataset.authTab);
+                return;
+            }
+            const pw = e.target.closest('[data-pw]');
+            if (pw) { setPasswordVisible(pw, pw.getAttribute('aria-pressed') !== 'true'); return; }
+            if (e.target.closest('[data-logout]')) { logout(); return; }
+            if (e.target.closest('[data-open-cart]')) { toggleCart(true); return; }
+
             const dot = e.target.closest('.ts-dot');
             if (dot) { goSlide(dot.closest('[data-slides]'), Number(dot.dataset.slide)); return; }
             const tog = e.target.closest('[data-cbtoggle]');
@@ -3739,9 +4661,7 @@
             const cbf = e.target.closest('[data-cbfilter]');
             if (cbf) { builder.filter = cbf.dataset.cbfilter; renderBuilder(); return; }
             const tab = e.target.closest('[data-filter]');
-            if (tab) { setFilter(tab.dataset.filter, false); return; }
-            const catBtn = e.target.closest('[data-cat]');
-            if (catBtn) { setFilter(catBtn.dataset.cat, true); }
+            if (tab) { setFilter(tab.dataset.filter, false); }
         });
 
         $('sort-select').addEventListener('change', (e) => { sortMode = e.target.value; renderProducts(); });
@@ -3753,9 +4673,10 @@
                 // đồng bộ hai ô tìm kiếm
                 ['search-input', 'search-input-mobile'].forEach((other) => { if (other !== id) $(other).value = searchTerm; });
                 renderProducts();
+                renderList();
             });
             input.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') { $('products').scrollIntoView({ behavior: 'smooth' }); }
+                if (e.key === 'Enter' && !$('view-home').hidden) { $('products').scrollIntoView({ behavior: 'smooth' }); }
             });
         });
 
@@ -3765,7 +4686,6 @@
         $('checkout-btn').addEventListener('click', () => showToast('Đây là bản demo, chưa kết nối cổng thanh toán.'));
 
         // quản lý sản phẩm
-        document.querySelectorAll('[data-open-manage]').forEach((el) => el.addEventListener('click', (e) => { e.preventDefault(); openManage(); }));
         $('product-form').addEventListener('submit', submitProduct);
         $('pf-cancel').addEventListener('click', resetForm);
         $('pf-reset').addEventListener('click', resetForm);
@@ -3792,7 +4712,7 @@
         $('cb-clear').addEventListener('click', () => { builder.selected = []; saveBuilder(); syncBuilderTiles(); renderBuilderSummary(); });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') { toggleCart(false); closeQuickView(); closeManage(); return; }
+            if (e.key === 'Escape') { toggleCart(false); closeQuickView(); closeManage(); closeAuth(); closeDDs(null); return; }
             if ($('quickview-modal').classList.contains('flex')) {
                 if (e.key === 'ArrowLeft') qvStep(-1);
                 else if (e.key === 'ArrowRight') qvStep(1);
@@ -3801,7 +4721,9 @@
 
         const mobileMenu = $('mobile-menu');
         $('mobile-menu-btn').addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        mobileMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target.closest('a, [data-auth], [data-logout], [data-open-manage]')) mobileMenu.classList.add('hidden');
+        });
 
         // ============================================================
         //  KHỞI TẠO
@@ -3813,10 +4735,14 @@
             loadBuilder();
             loadCart();
             loadViewed();
+            loadUsers();
+            loadSession();
             $('cb-min').textContent = CUSTOM_COMBO_MIN;
             $('pf-cat').innerHTML = Object.keys(categories).map((k) => `<option value="${k}">${esc(categories[k].label)}</option>`).join('');
             resetForm();
             refreshAll();
+            renderAuth();
+            applyRoute();
             startSlides();
         });
     </script>
